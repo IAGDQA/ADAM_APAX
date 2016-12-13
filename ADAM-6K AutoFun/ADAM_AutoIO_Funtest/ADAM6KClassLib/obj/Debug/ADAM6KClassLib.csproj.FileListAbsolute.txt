@@ -1,0 +1,10 @@
+C:\Users\jammy.huang\Desktop\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.dll
+C:\Users\jammy.huang\Desktop\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.pdb
+C:\Users\jammy.huang\Desktop\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.csprojResolveAssemblyReference.cache
+C:\Users\jammy.huang\Desktop\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.dll
+C:\Users\jammy.huang\Desktop\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.csprojResolveAssemblyReference.cache

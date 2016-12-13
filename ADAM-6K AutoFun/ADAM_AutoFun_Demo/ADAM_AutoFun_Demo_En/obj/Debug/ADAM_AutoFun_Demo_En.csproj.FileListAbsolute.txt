@@ -1,0 +1,13 @@
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\ADAM_AutoFun_Demo_En.exe
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\ADAM_AutoFun_Demo_En.pdb
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\ADAM6KClassLib.dll
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\DeviceModelDll.dll
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Adam.dll
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Common.dll
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Protocol.dll
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\ADAM6KClassLib.pdb
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Adam.xml
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Common.xml
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\bin\Debug\Advantech.Protocol.xml
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\obj\Debug\ADAM_AutoFun_Demo_En.exe
+C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_En\obj\Debug\ADAM_AutoFun_Demo_En.pdb
