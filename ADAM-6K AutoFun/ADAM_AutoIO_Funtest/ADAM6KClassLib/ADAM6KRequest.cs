@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
+using System.Collections;
 using Model;
 using System.Threading;
 using Advantech.Adam;
@@ -23,7 +24,7 @@ namespace Service
     {
         ADAM6K_IO_Model Device;//建立一個DeviceModel給所有Service
 
-        private System.Collections.ArrayList BaseListOfIOItems;//建立一個IO Item List
+        ArrayList BaseListOfIOItems;//建立一個IO Item List
 
         const int ADAM6KUDP_PORT = 1025;
         const int ADAMTCP_PORT = 502;
@@ -55,7 +56,7 @@ namespace Service
         public bool OpenCOM(string m_szIP)//Adam6000Type type
         {
             adamUDP = new AdamSocket();
-            adamUDP.SetTimeout(2000, 2000, 2000); // set timeout for UDP
+            adamUDP.SetTimeout(5000, 3000, 3000); // set timeout for UDP
             if (adamUDP.Connect(m_szIP, ProtocolType.Udp, ADAM6KUDP_PORT))
             {
                 if (!adamUDP.Configuration().GetFirmwareVer(out m_szFwVersion))
@@ -71,7 +72,7 @@ namespace Service
                 if (Device != null)
                 {
                     adamModbus = new AdamSocket();
-                    adamModbus.SetTimeout(1000, 1000, 1000); // set timeout for TCP
+                    adamModbus.SetTimeout(5000, 3000, 3000); // set timeout for TCP
                     if (adamModbus.Connect(m_szIP, ProtocolType.Tcp, ADAMTCP_PORT))
                     {
                         Device.Port = ADAMTCP_PORT;
@@ -244,6 +245,22 @@ namespace Service
                 if (chConfig.cRng != data.cRng)
                     SendCmdToConfig(data.Ch, data.cRng);
             }
+            else if(data.Id >= (int)DevIDDefine.DO)
+            {
+                //get ch config status
+                var chConfig = UpdateDOConfig(data.Ch);
+                //change mode
+                if (chConfig.Md != data.Md)
+                    SetDIO_ModeConfig(data.Id.GetValueOrDefault(), data.Md.GetValueOrDefault());
+            }
+            else
+            {
+                //get ch config status
+                var chConfig = UpdateDIConfig(data.Ch);
+                //change mode
+                if (chConfig.Md != data.Md)
+                    SetDIO_ModeConfig(data.Ch, data.Md.GetValueOrDefault());
+            }
 
             int cnt = 0;
             while (cnt < 10)//delay 1sec
@@ -266,6 +283,26 @@ namespace Service
                 //EnHA = data.EnHA.Value,
                 //LAMd = data.LAMd.Value,
                 //HAMd = data.HAMd.Value,
+            };
+        }
+        private IOModel UpdateDIConfig(int ch)
+        {
+            var data = GetIO(ch + (int)DevIDDefine.DI);
+            return new IOModel()
+            {
+                Ch = data.Ch,
+                Tag = data.Tag,
+                Md = data.Md,
+            };
+        }
+        private IOModel UpdateDOConfig(int ch)
+        {
+            var data = GetIO(ch + (int)DevIDDefine.DO);
+            return new IOModel()
+            {
+                Ch = data.Ch,
+                Tag = data.Tag,
+                Md = data.Md,
             };
         }
 
@@ -313,7 +350,11 @@ namespace Service
         {
             int iDiStart = 1;
             bool[] bDiData, bData;
+            byte[] di_config;
             int m_iDiTotal = Device.DiTotal;
+
+            if (adamModbus.DigitalInput().GetIOConfig(out di_config))
+            { }
 
             if (adamModbus.Modbus().ReadCoilStatus(iDiStart, m_iDiTotal, out bDiData))
             {
@@ -328,7 +369,7 @@ namespace Service
                 {
                     var temp = BfMdfIOCh;
                     temp.Val = Convert.ToInt32(bDiData[i]);
-                    //temp.Md = di_values.DIVal[i].Md;
+                    temp.Md = di_config[i];
                     //temp.Stat = di_values.DIVal[i].Stat;
                     //temp.Cnting = di_values.DIVal[i].Cnting;
                     //temp.OvLch = di_values.DIVal[i].OvLch;
@@ -357,7 +398,11 @@ namespace Service
         {
             int iDoStart = 17;
             bool[] bDoData, bData;
+            byte[] do_config;
             int m_iDoTotal = Device.DoTotal;
+
+            if (adamModbus.DigitalOutput().GetIOConfig(out do_config))
+            { }
 
             if (adamModbus.Modbus().ReadCoilStatus(iDoStart, m_iDoTotal, out bDoData))
             {
@@ -372,7 +417,7 @@ namespace Service
                 {
                     var temp = BfMdfIOCh;
                     temp.Val = Convert.ToInt32(bDoData[i]);
-                    //temp.Md = di_values.DIVal[i].Md;
+                    temp.Md = do_config[i];
                     //temp.Stat = di_values.DIVal[i].Stat;
                     //temp.Cnting = di_values.DIVal[i].Cnting;
                     //temp.OvLch = di_values.DIVal[i].OvLch;
@@ -624,6 +669,56 @@ namespace Service
 
             return false;
         }
+        private bool SetDIO_ModeConfig(int _id, int _typ)
+        {
+            int m_iDiTotal = Device.DiTotal;
+            string tpyStr = SpiltStr(SendCmd("$01C"), '!', '\r'); 
+            ArrayList temp_list = new ArrayList();
+            //get DIO mode type
+            for (int i = 0; i < tpyStr.Length; i += 2)
+            {
+                var res = tpyStr.ToCharArray(i, 2);
+                string temp = "";
+                foreach (var tChar in res)
+                {
+                    temp += tChar.ToString();
+                }
+                temp_list.Add(temp);
+            }
+            if (temp_list.Count < 1) return false;
+            var array = temp_list.ToArray();
+            if (_id >= (int)DevIDDefine.DO)
+            {
+                int ch = _id - (int)DevIDDefine.DO + m_iDiTotal;
+                string typ_S = "";
+                if (_typ == 0) typ_S = "00";
+                else if (_typ == 1) typ_S = "01";
+                else if (_typ == 2) typ_S = "02";
+                else if (_typ == 3) typ_S = "03";
+                else if (_typ == 4) typ_S = "04";
+                array[ch] = typ_S;
+            }
+            else
+            {
+                int ch = _id;string typS = "";
+                if (_typ == 160) typS = "A0";
+                else if(_typ == 161) typS = "A1";
+                else if (_typ == 162) typS = "A2";
+                else if (_typ == 163) typS = "A3";
+                else if (_typ == 164) typS = "A4";
+                array[ch] = typS;
+            }
+            string subCmd = "";
+            foreach(var _item in array)
+            {
+                subCmd += _item.ToString();
+            }
+            string cmd = "$01C" + subCmd;
+            if (SendCmd(cmd) == ">01\r")
+                return true;
+
+            return false;
+        }
 
         private float OutputByRng(int rng, int val)
         {
@@ -686,6 +781,7 @@ namespace Service
 
             return byRange;
         }
+        
 
         private int ReturnFormalRng(int code)//need to return formal rng code by different module
         {
@@ -817,7 +913,7 @@ namespace Service
             Adam6000Type type = new Adam6000Type();
             string modtype = SpiltStr(recev, '!', '\r');
             if (modtype == "6015") type = Adam6000Type.Adam6015;
-            if (modtype == "6017") type = Adam6000Type.Adam6017;
+            else if (modtype == "6017") type = Adam6000Type.Adam6017;
             //else if (name == "4011D") type = Adam4000Type.Adam4011D;
             //else if (name == "4012") type = Adam4000Type.Adam4012;
             //else if (name == "4013") type = Adam4000Type.Adam4013;
@@ -834,6 +930,8 @@ namespace Service
             ////AO
             //else if (name == "4021") type = Adam4000Type.Adam4021;
             //else if (name == "4024") type = Adam4000Type.Adam4024;
+            //DIO
+            else if (modtype == "6050") type = Adam6000Type.Adam6050;
             else type = Adam6000Type.Non;
             return type;
         }
@@ -897,6 +995,7 @@ namespace Service
             //    res = (uint)((var + 10) * 65535 / 20);
             return res;
         }
+        
 
         public enum DevIDDefine
         {
@@ -976,7 +1075,7 @@ namespace Service
             //    AIRng[12] = ValueRange.Rtype_500To1750C; AIRng[13] = ValueRange.Stype_500To1750C;
             //    AIRng[14] = ValueRange.Btype_500To1800C;
             //}
-            if (typ == Adam6000Type.Adam6015)
+            else if (typ == Adam6000Type.Adam6015)
             {
                 AiTotal = 7;
                 AIRng = new ValueRange[14]; AIRng.Initialize();
@@ -1030,7 +1129,10 @@ namespace Service
             //    AORng[0] = ValueRange.mA_0To20; AORng[1] = ValueRange.mA_4To20;
             //    AORng[2] = ValueRange.V_Neg10To10;
             //}
-
+            else if (typ == Adam6000Type.Adam6050)
+            {
+                DiTotal = 12; DoTotal = 6;
+            }
         }
 
     }

@@ -1,0 +1,14 @@
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\ADAM_AutoFun_Demo_Md.exe
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\ADAM_AutoFun_Demo_Md.pdb
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\ADAM6KClassLib.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\DeviceModelDll.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Adam.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Common.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Protocol.dll
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\ADAM6KClassLib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Adam.xml
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Common.xml
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\bin\Debug\Advantech.Protocol.xml
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\obj\Debug\ADAM_AutoFun_Demo_Md.csprojResolveAssemblyReference.cache
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\obj\Debug\ADAM_AutoFun_Demo_Md.exe
+D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo_Md\obj\Debug\ADAM_AutoFun_Demo_Md.pdb

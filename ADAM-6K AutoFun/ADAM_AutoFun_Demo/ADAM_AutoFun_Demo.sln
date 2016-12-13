@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoFun_Demo", "ADAM_A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoFun_Demo_En", "ADAM_AutoFun_Demo_En\ADAM_AutoFun_Demo_En.csproj", "{F7553856-24DF-4EFA-84AC-B0CE5102D65C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoFun_Demo_Md", "ADAM_AutoFun_Demo_Md\ADAM_AutoFun_Demo_Md.csproj", "{EC520C63-72FF-480A-92F9-187AA0A5FAF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F7553856-24DF-4EFA-84AC-B0CE5102D65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7553856-24DF-4EFA-84AC-B0CE5102D65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7553856-24DF-4EFA-84AC-B0CE5102D65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC520C63-72FF-480A-92F9-187AA0A5FAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC520C63-72FF-480A-92F9-187AA0A5FAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC520C63-72FF-480A-92F9-187AA0A5FAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC520C63-72FF-480A-92F9-187AA0A5FAF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
