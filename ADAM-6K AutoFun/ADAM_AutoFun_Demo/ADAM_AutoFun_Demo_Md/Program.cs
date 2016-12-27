@@ -47,7 +47,7 @@ namespace ADAM_AutoFun_Demo_Md
                         };
                     }
                 }
-                IOitem.Md = 1;
+                IOitem.Md = 2; IOitem.Inv = 0; IOitem.Fltr = 1;
                 //    IOModel IOitem = new IOModel()
                 //{
                 //    Id = 0,

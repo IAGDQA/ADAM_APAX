@@ -18,3 +18,11 @@ D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_Rang
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.exe
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.pdb
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.csprojResolveAssemblyReference.cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_RangeCode.exe.config
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_RangeCode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_RangeCode.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_RangeCode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode.pdb

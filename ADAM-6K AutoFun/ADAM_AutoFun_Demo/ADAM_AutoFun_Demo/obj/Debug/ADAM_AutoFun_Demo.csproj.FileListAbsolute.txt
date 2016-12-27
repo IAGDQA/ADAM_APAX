@@ -12,3 +12,14 @@ C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.P
 C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.csprojResolveAssemblyReference.cache
 C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.exe
 C:\Users\Jammy\Desktop\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\ADAM_AutoFun_Demo.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\ADAM_AutoFun_Demo.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Adam.dll
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Common.dll
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Protocol.dll
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Adam.xml
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Common.xml
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\bin\Debug\Advantech.Protocol.xml
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoFun_Demo\ADAM_AutoFun_Demo\obj\Debug\ADAM_AutoFun_Demo.csprojResolveAssemblyReference.cache

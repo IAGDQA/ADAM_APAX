@@ -7,3 +7,7 @@ D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClas
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.pdb
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.dll
 D:\Advantech\2016\DQA_New Progrm Project\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.dll
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM6KClassLib.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.dll
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM6KClassLib\obj\Debug\ADAM6KClassLib.pdb

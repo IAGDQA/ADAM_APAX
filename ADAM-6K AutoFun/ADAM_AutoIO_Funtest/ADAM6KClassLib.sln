@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM6KClassLib", "ADAM6KClassLib\ADAM6KClassLib.csproj", "{2CF5FC97-1F3B-424F-8067-B125711CF296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_ChannelMask", "ADAM_AutoIO_ChannelMask\ADAM_AutoIO_ChannelMask.csproj", "{BEC8BC3B-215B-4D5C-83B9-4F2325AC5B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_LtoH_Latch", "ADAM_AutoIO_LtoH_Latch\ADAM_AutoIO_LtoH_Latch.csproj", "{DDE02865-8639-4D4B-AD79-F9137DFA643C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_HtoL_Latch", "ADAM_AutoIO_HtoL_Latch\ADAM_AutoIO_HtoL_Latch.csproj", "{19F97A5E-86AB-446C-B167-26B2B47F3D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_Di_CntMode", "ADAM_AutoIO_Di_CntMode\ADAM_AutoIO_Di_CntMode.csproj", "{8E65F366-819A-414E-93E1-BB7995F3ED05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_Di_FreqMode", "ADAM_AutoIO_Di_FreqMode\ADAM_AutoIO_Di_FreqMode.csproj", "{E5256A9D-BE95-4FF5-B269-48BE04654FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_Di_Value", "ADAM_AutoIO_Di_Value\ADAM_AutoIO_Di_Value.csproj", "{1D7E849D-FFB9-4B5B-AE9C-1FE68FFC959D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CF5FC97-1F3B-424F-8067-B125711CF296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF5FC97-1F3B-424F-8067-B125711CF296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF5FC97-1F3B-424F-8067-B125711CF296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF5FC97-1F3B-424F-8067-B125711CF296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC8BC3B-215B-4D5C-83B9-4F2325AC5B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC8BC3B-215B-4D5C-83B9-4F2325AC5B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC8BC3B-215B-4D5C-83B9-4F2325AC5B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC8BC3B-215B-4D5C-83B9-4F2325AC5B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E65F366-819A-414E-93E1-BB7995F3ED05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E65F366-819A-414E-93E1-BB7995F3ED05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E65F366-819A-414E-93E1-BB7995F3ED05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E65F366-819A-414E-93E1-BB7995F3ED05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5256A9D-BE95-4FF5-B269-48BE04654FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5256A9D-BE95-4FF5-B269-48BE04654FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5256A9D-BE95-4FF5-B269-48BE04654FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5256A9D-BE95-4FF5-B269-48BE04654FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D7E849D-FFB9-4B5B-AE9C-1FE68FFC959D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7E849D-FFB9-4B5B-AE9C-1FE68FFC959D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7E849D-FFB9-4B5B-AE9C-1FE68FFC959D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7E849D-FFB9-4B5B-AE9C-1FE68FFC959D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

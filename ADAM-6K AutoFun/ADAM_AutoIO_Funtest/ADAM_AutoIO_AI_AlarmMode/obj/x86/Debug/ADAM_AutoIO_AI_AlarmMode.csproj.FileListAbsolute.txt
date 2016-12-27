@@ -1,0 +1,19 @@
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.csprojResolveAssemblyReference.cache
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_RangeCode_Form.resources
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\BuildDLL\ADAM_AutoIO_AI_AlarmMode.exe.config
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\BuildDLL\ADAM_AutoIO_AI_AlarmMode.exe
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\BuildDLL\ADAM_AutoIO_AI_AlarmMode.pdb
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.exe
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.pdb
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_AlarmMode.exe.config
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_AlarmMode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_AI_AlarmMode.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.csprojResolveAssemblyReference.cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_AI_AlarmMode\obj\x86\Debug\ADAM_AutoIO_AI_AlarmMode.pdb

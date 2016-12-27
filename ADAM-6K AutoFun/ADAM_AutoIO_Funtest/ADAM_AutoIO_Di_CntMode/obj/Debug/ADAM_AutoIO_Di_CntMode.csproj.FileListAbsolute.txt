@@ -1,0 +1,8 @@
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_CntMode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_CntMode.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_CntMode\obj\Debug\ADAM_AutoIO_Di_CntMode.csprojResolveAssemblyReference.cache

@@ -250,16 +250,16 @@ namespace Service
                 //get ch config status
                 var chConfig = UpdateDOConfig(data.Ch);
                 //change mode
-                if (chConfig.Md != data.Md)
-                    SetDIO_ModeConfig(data.Id.GetValueOrDefault(), data.Md.GetValueOrDefault());
+                if (chConfig.Md != data.Md || chConfig.Inv != data.Inv || chConfig.Fltr != data.Fltr)
+                    SetDIO_ModeConfig(data);//SetDIO_ModeConfig(data.Id.GetValueOrDefault(), data.Md.GetValueOrDefault());
             }
             else
             {
                 //get ch config status
                 var chConfig = UpdateDIConfig(data.Ch);
                 //change mode
-                if (chConfig.Md != data.Md)
-                    SetDIO_ModeConfig(data.Ch, data.Md.GetValueOrDefault());
+                if (chConfig.Md != data.Md || chConfig.Inv != data.Inv || chConfig.Fltr != data.Fltr)
+                    SetDIO_ModeConfig(data);//SetDIO_ModeConfig(data.Ch, data.Md.GetValueOrDefault());
             }
 
             int cnt = 0;
@@ -350,10 +350,13 @@ namespace Service
         {
             int iDiStart = 1;
             bool[] bDiData, bData;
-            byte[] di_config;
+            int[] bMd, bInv, bFlt;
+            //byte[] di_config;
             int m_iDiTotal = Device.DiTotal;
 
-            if (adamModbus.DigitalInput().GetIOConfig(out di_config))
+            //if (adamModbus.DigitalInput().GetIOConfig(out di_config))
+            //{ }
+            if (GetDIO_ModeConfig(out bMd, out bInv, out bFlt))//20161220 add get DI config
             { }
 
             if (adamModbus.Modbus().ReadCoilStatus(iDiStart, m_iDiTotal, out bDiData))
@@ -369,7 +372,10 @@ namespace Service
                 {
                     var temp = BfMdfIOCh;
                     temp.Val = Convert.ToInt32(bDiData[i]);
-                    temp.Md = di_config[i];
+                    temp.Md = bMd[i];
+                    temp.Inv = bInv[i];
+                    temp.Fltr = bFlt[i];
+                    //temp.Md = di_config[i];
                     //temp.Stat = di_values.DIVal[i].Stat;
                     //temp.Cnting = di_values.DIVal[i].Cnting;
                     //temp.OvLch = di_values.DIVal[i].OvLch;
@@ -501,10 +507,10 @@ namespace Service
                                 #endregion
                                 else
                                 {
+                                    temp.En = m_bChEnabled[i] ? 1 : 0;
                                     //填入相對應的屬性數值
                                     if (m_bChEnabled[i])
-                                    {   //value is row data.
-                                        temp.En = m_bChEnabled[i] ? 1 : 0;
+                                    {   //value is row data.                                        
                                         temp.EgF = fValue[i];
                                         temp.Val = FloatToRowData(i, fValue[i]);// * 1000
                                         if (m_DeviceFwVer < m_Adam6000NewerFwVer)//detect new FW
@@ -649,6 +655,17 @@ namespace Service
                 //else if (typ == (int)ValueRange.mA_0To20) result = 13;
                 //else if (typ == (int)ValueRange.mA_4To20) result = 7;
             }
+            else if (Device.ModuleType == "Adam6018")
+            {
+                if (typ == (int)ValueRange.Jtype_0To760C) result = 14;
+                else if (typ == (int)ValueRange.Ktype_0To1370C) result = 15;
+                else if (typ == (int)ValueRange.Ttype_Neg100To400C) result = 16;
+                else if (typ == (int)ValueRange.Etype_0To1000C) result = 17;
+                else if (typ == (int)ValueRange.Rtype_500To1750C) result = 18;
+                else if (typ == (int)ValueRange.Stype_500To1750C) result = 19;
+                else if (typ == (int)ValueRange.Btype_500To1800C) result = 20;
+                //else result = typ;
+            }
             else return false;
 
             if (adamModbus.AnalogInput().SetInputRange(ch, (byte)result))
@@ -669,7 +686,15 @@ namespace Service
 
             return false;
         }
-        private bool SetDIO_ModeConfig(int _id, int _typ)
+        /// <summary>
+        /// for ADAM-6000 command set
+        /// $01Caabbccdd......
+        /// </summary>
+        /// <param name="_id"></param>
+        /// <param name="_typ"></param>
+        /// <returns></returns>
+        //private bool SetDIO_ModeConfig(int _id, int _typ)
+        private bool SetDIO_ModeConfig(IOModel mod)
         {
             int m_iDiTotal = Device.DiTotal;
             string tpyStr = SpiltStr(SendCmd("$01C"), '!', '\r'); 
@@ -687,25 +712,32 @@ namespace Service
             }
             if (temp_list.Count < 1) return false;
             var array = temp_list.ToArray();
-            if (_id >= (int)DevIDDefine.DO)
+            if (mod.Id/*_id*/ >= (int)DevIDDefine.DO)
             {
-                int ch = _id - (int)DevIDDefine.DO + m_iDiTotal;
+                int ch = mod.Ch;//_id - (int)DevIDDefine.DO + m_iDiTotal;
                 string typ_S = "";
-                if (_typ == 0) typ_S = "00";
-                else if (_typ == 1) typ_S = "01";
-                else if (_typ == 2) typ_S = "02";
-                else if (_typ == 3) typ_S = "03";
-                else if (_typ == 4) typ_S = "04";
+                if (mod.Md == 0) typ_S = "00";
+                else if (mod.Md == 1) typ_S = "01";
+                else if (mod.Md == 2) typ_S = "02";
+                else if (mod.Md == 3) typ_S = "03";
+                else if (mod.Md == 4) typ_S = "04";
                 array[ch] = typ_S;
             }
             else
             {
-                int ch = _id;string typS = "";
-                if (_typ == 160) typS = "A0";
-                else if(_typ == 161) typS = "A1";
-                else if (_typ == 162) typS = "A2";
-                else if (_typ == 163) typS = "A3";
-                else if (_typ == 164) typS = "A4";
+                int ch = mod.Ch;// _id; 
+                string typS = "";
+                //if (_typ == 160) typS = "A0";
+                //else if(_typ == 161) typS = "A1";
+                //else if (_typ == 162) typS = "A2";
+                //else if (_typ == 163) typS = "A3";
+                //else if (_typ == 164) typS = "A4";
+                if (mod.Inv == 1 && mod.Fltr == 1)
+                    typS = "E" + mod.Md.ToString();
+                else if (mod.Inv == 0 && mod.Fltr == 1)
+                    typS = "6" + mod.Md.ToString();
+                else typS = "A" + mod.Md.ToString();
+
                 array[ch] = typS;
             }
             string subCmd = "";
@@ -781,7 +813,63 @@ namespace Service
 
             return byRange;
         }
-        
+        private bool GetDIO_ModeConfig(out int[] bMd, out int[] bInv, out int[] bFlt)
+        {
+            bMd = new int[1]; bInv = new int[1]; bFlt = new int[1];
+            int m_iDiTotal = Device.DiTotal;
+            string tpyStr = SpiltStr(SendCmd("$01C"), '!', '\r');
+            ArrayList temp_list = new ArrayList();
+            //get DIO mode type
+            for (int i = 0; i < tpyStr.Length; i +=2)
+            {
+                var res = tpyStr.ToCharArray(i, 2);
+                string temp = "";
+                foreach (var tChar in res)
+                {
+                    temp += tChar.ToString();
+                }
+                temp_list.Add(temp);
+            }
+            if (temp_list.Count < 1) return false;
+            var array = temp_list.ToArray();
+            bMd = new int[array.Length]; bInv = new int[array.Length]; bFlt = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                string temp = (string)array[i];
+                ulong number = UInt64.Parse(temp, System.Globalization.NumberStyles.HexNumber);
+                byte rByte = Convert.ToByte(number);
+                string binaryString = Convert.ToString(rByte, 2);
+                var in_array = binaryString.ToCharArray();
+                //補足8bit並反向
+                char[] chr_array = new char[8];
+                for (int j = 0; j < 8; j++)
+                {
+                    if (j < in_array.Length)
+                        chr_array[j] = in_array[in_array.Length - 1 - j];
+                }
+                //
+                if (i< m_iDiTotal)
+                {   //detect binary formate
+                    bInv[i] = chr_array[7] == '1' ? 1 : 0;
+                    bFlt[i] = chr_array[6] == '1' ? 1 : 0;
+                    if (chr_array[2] == '1'&& chr_array[1] == '0' && chr_array[0] == '0') bMd[i] = 4;//0100
+                    else if (chr_array[2] == '0' && chr_array[1] == '1' && chr_array[0] == '1') bMd[i] = 3;//0011
+                    else if (chr_array[2] == '0' && chr_array[1] == '1' && chr_array[0] == '0') bMd[i] = 2;//0010
+                    else bMd[i] = 1;//0001
+                }
+                else
+                {   //00
+                    if (temp == "04") bMd[i] = 4;
+                    else if (temp == "03") bMd[i] = 3;
+                    else if (temp == "02") bMd[i] = 2;
+                    else bMd[i] = 1;
+                }
+                
+                
+            }
+
+            return false;
+        }
 
         private int ReturnFormalRng(int code)//need to return formal rng code by different module
         {
@@ -914,24 +1002,15 @@ namespace Service
             string modtype = SpiltStr(recev, '!', '\r');
             if (modtype == "6015") type = Adam6000Type.Adam6015;
             else if (modtype == "6017") type = Adam6000Type.Adam6017;
-            //else if (name == "4011D") type = Adam4000Type.Adam4011D;
-            //else if (name == "4012") type = Adam4000Type.Adam4012;
-            //else if (name == "4013") type = Adam4000Type.Adam4013;
-            //else if (name == "4015") type = Adam4000Type.Adam4015;
-            //else if (name == "4015T") type = Adam4000Type.Adam4015T;
-            //else if (name == "4017") type = Adam4000Type.Adam4017;
-            //else if (name == "4017P") type = Adam4000Type.Adam4017P;
-            //else if (name == "4018") type = Adam4000Type.Adam4018;
-            //else if (name == "4018P") type = Adam4000Type.Adam4018P;
-            //else if (name == "4018M") type = Adam4000Type.Adam4018M;
-            //else if (name == "4019P") type = Adam4000Type.Adam4019P;
-            //else if (name == "4117") type = Adam4000Type.Adam4117;
-            //else if (name == "4118") type = Adam4000Type.Adam4118;
-            ////AO
-            //else if (name == "4021") type = Adam4000Type.Adam4021;
-            //else if (name == "4024") type = Adam4000Type.Adam4024;
+            else if (modtype == "6018") type = Adam6000Type.Adam6018;
+            //AO
+            else if (modtype == "6024") type = Adam6000Type.Adam6024;
             //DIO
             else if (modtype == "6050") type = Adam6000Type.Adam6050;
+            else if (modtype == "6051") type = Adam6000Type.Adam6051;
+            else if (modtype == "6052") type = Adam6000Type.Adam6052;
+            else if (modtype == "6060") type = Adam6000Type.Adam6060;
+            else if (modtype == "6066") type = Adam6000Type.Adam6066;
             else type = Adam6000Type.Non;
             return type;
         }
@@ -1028,53 +1107,6 @@ namespace Service
                 AIRng[10] = ValueRange.mA_Neg20To20;
                 AIRng[11] = ValueRange.mA_0To20; AIRng[12] = ValueRange.mA_4To20;
             }
-            //if (typ == Adam4000Type.Adam4017 || typ == Adam4000Type.Adam4017P || typ == Adam4000Type.Adam4012)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[7]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mV_Neg150To150;
-            //    AIRng[1] = ValueRange.mV_Neg500To500; AIRng[2] = ValueRange.V_Neg1To1;
-            //    AIRng[3] = ValueRange.V_Neg5To5;
-            //    AIRng[4] = ValueRange.V_Neg10To10;
-            //    AIRng[5] = ValueRange.mA_Neg20To20; AIRng[6] = ValueRange.mA_4To20;
-            //}
-            //else if (typ == Adam4000Type.Adam4011 || typ == Adam4000Type.Adam4011D
-            //            || typ == Adam4000Type.Adam4018 || typ == Adam4000Type.Adam4018M)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[14]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mV_Neg15To15; AIRng[1] = ValueRange.mV_Neg50To50;
-            //    AIRng[2] = ValueRange.mV_Neg100To100; AIRng[3] = ValueRange.mV_Neg500To500;
-            //    AIRng[4] = ValueRange.V_Neg1To1; AIRng[5] = ValueRange.V_Neg2pt5To2pt5;
-            //    AIRng[6] = ValueRange.mA_Neg20To20;
-            //    AIRng[7] = ValueRange.Jtype_0To760C; AIRng[8] = ValueRange.Ktype_0To1370C;
-            //    AIRng[9] = ValueRange.Ttype_Neg100To400C; AIRng[10] = ValueRange.Etype_0To1000C;
-            //    AIRng[11] = ValueRange.Rtype_500To1750C; AIRng[12] = ValueRange.Stype_500To1750C;
-            //    AIRng[13] = ValueRange.Btype_500To1800C;
-            //}
-            //else if (typ == Adam4000Type.Adam4018P)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[8]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mA_Neg20To20;
-            //    AIRng[1] = ValueRange.Jtype_0To760C; AIRng[2] = ValueRange.Ktype_0To1370C;
-            //    AIRng[3] = ValueRange.Ttype_Neg100To400C; AIRng[4] = ValueRange.Etype_0To1000C;
-            //    AIRng[5] = ValueRange.Rtype_500To1750C; AIRng[6] = ValueRange.Stype_500To1750C;
-            //    AIRng[7] = ValueRange.Btype_500To1800C;
-            //}
-            //else if (typ == Adam4000Type.Adam4019P)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[15]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mV_Neg100To100; AIRng[1] = ValueRange.mV_Neg500To500;
-            //    AIRng[2] = ValueRange.V_Neg1To1; AIRng[3] = ValueRange.V_Neg2pt5To2pt5;
-            //    AIRng[4] = ValueRange.V_Neg10To10; AIRng[5] = ValueRange.V_Neg5To5;
-            //    AIRng[6] = ValueRange.mA_Neg20To20; AIRng[7] = ValueRange.mA_4To20;
-            //    AIRng[8] = ValueRange.Jtype_0To760C; AIRng[9] = ValueRange.Ktype_0To1370C;
-            //    AIRng[10] = ValueRange.Ttype_Neg100To400C; AIRng[11] = ValueRange.Etype_0To1000C;
-            //    AIRng[12] = ValueRange.Rtype_500To1750C; AIRng[13] = ValueRange.Stype_500To1750C;
-            //    AIRng[14] = ValueRange.Btype_500To1800C;
-            //}
             else if (typ == Adam6000Type.Adam6015)
             {
                 AiTotal = 7;
@@ -1088,50 +1120,47 @@ namespace Service
                 AIRng[11] = ValueRange.BALCO500_Neg30to120;
                 AIRng[12] = ValueRange.Ni518_Neg80to100; AIRng[13] = ValueRange.Ni518_0to100;
             }
-            //else if (typ == Adam4000Type.Adam4117)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[15]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mV_0To150; AIRng[1] = ValueRange.mV_0To500;
-            //    AIRng[2] = ValueRange.V_0To1; AIRng[3] = ValueRange.V_0To5;
-            //    AIRng[4] = ValueRange.V_0To10; AIRng[5] = ValueRange.V_0To15;
-            //    AIRng[6] = ValueRange.mV_Neg150To150; AIRng[7] = ValueRange.mV_Neg500To500;
-            //    AIRng[8] = ValueRange.V_Neg1To1; AIRng[9] = ValueRange.V_Neg5To5;
-            //    AIRng[10] = ValueRange.V_Neg10To10; AIRng[11] = ValueRange.V_Neg15To15;
-            //    AIRng[12] = ValueRange.mA_0To20; AIRng[13] = ValueRange.mA_Neg20To20;
-            //    AIRng[14] = ValueRange.mA_4To20;
+            else if (typ == Adam6000Type.Adam6018)
+            {
+                AiTotal = 8;
+                AIRng = new ValueRange[7]; AIRng.Initialize();
+                AIRng[0] = ValueRange.Jtype_0To760C; AIRng[1] = ValueRange.Ktype_0To1370C;
+                AIRng[2] = ValueRange.Ttype_Neg100To400C; AIRng[3] = ValueRange.Etype_0To1000C;
+                AIRng[4] = ValueRange.Rtype_500To1750C; AIRng[5] = ValueRange.Stype_500To1750C;
+                AIRng[6] = ValueRange.Btype_500To1800C;
+            }
+            else if (typ == Adam6000Type.Adam6024)
+            {
+                AiTotal = 6;
+                AIRng = new ValueRange[3]; AIRng.Initialize();
+                AIRng[0] = ValueRange.V_Neg10To10;
+                AIRng[1] = ValueRange.mA_0To20; AIRng[2] = ValueRange.mA_4To20;
 
-            //}
-            //else if (typ == Adam4000Type.Adam4118)
-            //{
-            //    AiTotal = 8;
-            //    AIRng = new ValueRange[15]; AIRng.Initialize();
-            //    AIRng[0] = ValueRange.mV_Neg15To15; AIRng[1] = ValueRange.mV_Neg50To50;
-            //    AIRng[2] = ValueRange.mV_Neg100To100; AIRng[3] = ValueRange.mV_Neg500To500;
-            //    AIRng[4] = ValueRange.V_Neg1To1; AIRng[5] = ValueRange.V_Neg2pt5To2pt5;
-            //    AIRng[6] = ValueRange.mA_Neg20To20; AIRng[7] = ValueRange.mA_4To20;
-            //    AIRng[8] = ValueRange.Jtype_0To760C; AIRng[9] = ValueRange.Ktype_0To1370C;
-            //    AIRng[10] = ValueRange.Ttype_Neg100To400C; AIRng[11] = ValueRange.Etype_0To1000C;
-            //    AIRng[12] = ValueRange.Rtype_500To1750C; AIRng[13] = ValueRange.Stype_500To1750C;
-            //    AIRng[14] = ValueRange.Btype_500To1800C;
-            //}
-            //else if (typ == Adam4000Type.Adam4021)
-            //{
-            //    AoTotal = 1;
-            //    AORng = new ValueRange[3]; AORng.Initialize();
-            //    AORng[0] = ValueRange.mA_0To20; AORng[1] = ValueRange.mA_4To20;
-            //    AORng[2] = ValueRange.V_0To10;
-            //}
-            //else if (typ == Adam4000Type.Adam4024)
-            //{
-            //    AoTotal = 1;
-            //    AORng = new ValueRange[3]; AORng.Initialize();
-            //    AORng[0] = ValueRange.mA_0To20; AORng[1] = ValueRange.mA_4To20;
-            //    AORng[2] = ValueRange.V_Neg10To10;
-            //}
+                AoTotal = 2;
+                AORng = new ValueRange[3]; AORng.Initialize();
+                AORng[0] = ValueRange.mA_0To20; AORng[1] = ValueRange.mA_4To20;
+                AORng[2] = ValueRange.V_0To10;
+            }
             else if (typ == Adam6000Type.Adam6050)
             {
                 DiTotal = 12; DoTotal = 6;
+            }
+            else if (typ == Adam6000Type.Adam6051)
+            {
+                DiTotal = 12; DoTotal = 2;
+                CntTotal = 2;
+            }
+            else if (typ == Adam6000Type.Adam6052)
+            {
+                DiTotal = 8; DoTotal = 8;
+            }
+            else if (typ == Adam6000Type.Adam6060)
+            {
+                DiTotal = 6; DoTotal = 6;
+            }
+            else if (typ == Adam6000Type.Adam6066)
+            {
+                DiTotal = 6; DoTotal = 6;
             }
         }
 

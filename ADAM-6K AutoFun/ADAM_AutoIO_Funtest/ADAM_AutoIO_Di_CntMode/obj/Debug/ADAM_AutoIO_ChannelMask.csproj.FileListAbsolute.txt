@@ -1,0 +1,16 @@
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask_Form.resources
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\BuildDLL\ADAM_AutoIO_ChannelMask.exe
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\BuildDLL\ADAM_AutoIO_ChannelMask.pdb
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.exe
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.pdb
+D:\Advantech\AutoTest\ADAM_AutoIO_Funtest_1207\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.csprojResolveAssemblyReference.cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_ChannelMask.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_ChannelMask.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_ChannelMask\obj\Debug\ADAM_AutoIO_ChannelMask.csprojResolveAssemblyReference.cache
