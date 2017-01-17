@@ -104,8 +104,9 @@ public partial class ADAM_AutoIO_Di_FreqMode_Form : Form, iATester.iCom
         }
 
     }
-    int _apaxDOslot_idx;
+
     //int _apaxDOslot_idx = 1;//for 5046 modbus address 1
+    int _apaxDOslot_idx;
     public int OutDO_Slot_Idx
     {
         get { return _apaxDOslot_idx; }
@@ -113,9 +114,39 @@ public partial class ADAM_AutoIO_Di_FreqMode_Form : Form, iATester.iCom
         {
             _apaxDOslot_idx = value;
             //idxTxtbox.Text = _apaxDOslot_idx.ToString();
-            //RaisePropertyChanged("OutAO_Slot_Idx");
         }
 
+    }
+    int _apaxDIslot_idx;
+    public int OutDI_Slot_Idx
+    {
+        get { return _apaxDIslot_idx; }
+        set
+        {
+            _apaxDIslot_idx = value;
+            //idxTxtbox.Text = _apaxDOslot_idx.ToString();
+        }
+
+    }
+    int _apaxAOslot_idx;
+    public int OutAO_Slot_Idx
+    {
+        get { return _apaxAOslot_idx; }
+        set
+        {
+            _apaxAOslot_idx = value;
+            //idxTxtbox.Text = _apaxDOslot_idx.ToString();
+        }
+    }
+    int _apaxAIslot_idx;
+    public int OutAI_Slot_Idx
+    {
+        get { return _apaxAIslot_idx; }
+        set
+        {
+            _apaxAIslot_idx = value;
+            //idxTxtbox.Text = _apaxDOslot_idx.ToString();
+        }
     }
 
     int _ref_ai_num = 0;
@@ -636,17 +667,58 @@ public partial class ADAM_AutoIO_Di_FreqMode_Form : Form, iATester.iCom
             Device.ModuleType == "Adam6024")
         {
             Ref_IO_Mod = new ADAM_IO_Model(Device.ModuleType);
-            //5046 slot 0            
-            //local test
-            //if (Device.ModuleType == "Adam6051") _apaxDOslot_idx = 1;
-            if (Device.ModuleType == "Adam6050") _apaxDOslot_idx = 1;
-            if (Device.ModuleType == "Adam6051") _apaxDOslot_idx = 13;           
-            //5046 slot 1
-            if (Device.ModuleType == "Adam6060") _apaxDOslot_idx = 65;
-            if (Device.ModuleType == "Adam6066") _apaxDOslot_idx = 71;
-            if (Device.ModuleType == "Adam6052") _apaxDOslot_idx = 77;
-            if (Device.ModuleType == "Adam6024" || Device.ModuleType == "Adam6022") _apaxDOslot_idx = 85;
-            //if (Device.ModuleType == "Adam6051") OutDOcnt_Slot_Idx = 87
+            if (Device.ModuleType == "Adam6050")
+            {
+                _apaxDIslot_idx = 129;
+                _apaxDOslot_idx = 1;
+
+            }
+            if (Device.ModuleType == "Adam6051")
+            {
+                //OutDOcnt_Slot_Idx = 87 
+                _apaxDIslot_idx = 135;
+                _apaxDOslot_idx = 13;
+
+            }
+            if (Device.ModuleType == "Adam6060")
+            {
+                _apaxDIslot_idx = 141;
+                _apaxDOslot_idx = 65;
+
+            }
+            if (Device.ModuleType == "Adam6066")
+            {
+                _apaxDIslot_idx = 147;
+                _apaxDOslot_idx = 71;
+
+            }
+            if (Device.ModuleType == "Adam6052")
+            {
+                _apaxDIslot_idx = 193;
+                _apaxDOslot_idx = 77;
+
+            }
+            if (Device.ModuleType == "Adam6022")
+            {
+                _apaxDIslot_idx = 137;
+                _apaxDOslot_idx = 85;
+            }
+            if (Device.ModuleType == "Adam6024")
+            {
+                _apaxAIslot_idx = 193; //4x
+                _apaxAOslot_idx = 161; //4x
+                _apaxDIslot_idx = 139;
+                _apaxDOslot_idx = 85;
+            }
+            if (Device.ModuleType == "Adam6017")
+            {
+                _apaxAOslot_idx = 129; //4x
+                _apaxDIslot_idx = 205;
+            }
+            if (Device.ModuleType == "Adam6018")
+            {
+                _apaxDIslot_idx = 207;
+            } 
             idxTxtbox.Text = _apaxDOslot_idx.ToString();
             lenTxtbox.Text = Device.DiTotal.ToString();
         }

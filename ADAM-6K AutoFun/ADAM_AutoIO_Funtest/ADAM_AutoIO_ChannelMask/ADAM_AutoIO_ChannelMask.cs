@@ -268,7 +268,15 @@ public partial class ADAM_AutoIO_ChannelMask_Form : Form, iATester.iCom
             mbData[2] = value;
         }
     }
-
+    public string MBData04
+    {
+        get { return mbData[3]; }
+        set
+        {
+            modbTxtbox[3].Text = value.ToString();
+            mbData[3] = value;
+        }
+    }
     //
     bool[] stpchk = new bool[10];
     public bool StpChkIdx0
