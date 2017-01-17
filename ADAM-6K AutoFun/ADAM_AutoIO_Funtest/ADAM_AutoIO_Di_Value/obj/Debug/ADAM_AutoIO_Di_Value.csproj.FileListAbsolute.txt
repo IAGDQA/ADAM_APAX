@@ -1,8 +1,8 @@
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_Value.exe
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_Value.pdb
-D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.csprojResolveAssemblyReference.cache
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value_Form.resources
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.Properties.Resources.resources
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.csproj.GenerateResource.Cache
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.exe
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_Value\obj\Debug\ADAM_AutoIO_Di_Value.csprojResolveAssemblyReference.cache

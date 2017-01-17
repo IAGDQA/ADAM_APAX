@@ -373,13 +373,13 @@
         // 
         this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
-        this.dataGridView1.Location = new System.Drawing.Point(508, 78);
+        this.dataGridView1.Location = new System.Drawing.Point(504, 78);
         this.dataGridView1.Name = "dataGridView1";
         this.dataGridView1.RowTemplate.Height = 24;
-        this.dataGridView1.Size = new System.Drawing.Size(356, 326);
+        this.dataGridView1.Size = new System.Drawing.Size(360, 326);
         this.dataGridView1.TabIndex = 21;
         // 
-        // ADAM_AutoIO_HtoL_Latch_Form
+        // ADAM_AutoIO_Di_CntMode_Form
         // 
         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -397,7 +397,7 @@
         this.Controls.Add(this.dataGridView1);
         this.Controls.Add(this.statusStrip1);
         this.Controls.Add(this.groupBox1);
-        this.Name = "ADAM_AutoIO_HtoL_Latch_Form";
+        this.Name = "ADAM_AutoIO_Di_CntMode_Form";
         this.Text = "ADAM_AutoIO_Di_CntMode";
         this.Load += new System.EventHandler(this.ADAM_AutoIO_Di_CntMode_Load);
         this.groupBox1.ResumeLayout(false);

@@ -469,28 +469,28 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
     }
     public void StartTest()//iATester
     {
-        //if (WISEConnection())
-        //{
-        //    eStatus(this, new StatusEventArgs(iStatus.Running));
-        //    while (timer.Enabled)
-        //    {
-        //        Application.DoEvents();
-        //        label23.Text = "iA running....";
-        //    }
+        if (ADAMConnection())
+        {
+            eStatus(this, new StatusEventArgs(iStatus.Running));
+            while (timer1.Enabled)
+            {
+                Application.DoEvents();
+                //label23.Text = "iA running....";
+            }
 
-        //    if (FailCnt > 0 || !FinishFlg)
-        //        eResult(this, new ResultEventArgs(iResult.Fail));
-        //    else
-        //        eResult(this, new ResultEventArgs(iResult.Pass));
-        //    //20161109 add
-        //    if (!FinishFlg)
-        //        eLog(this, new LogEventArgs("WISE_AutoIO_AI_FunTest.exe", "Process is not finish."));
-        //}
-        //else
-        //    eResult(this, new ResultEventArgs(iResult.Fail));
-        ////
-        //eStatus(this, new StatusEventArgs(iStatus.Completion));
-        //Application.DoEvents(); label23.Text = "iA finished....";
+            if (FailCnt > 0 || !FinishFlg)
+                eResult(this, new ResultEventArgs(iResult.Fail));
+            else
+                eResult(this, new ResultEventArgs(iResult.Pass));
+            //20161109 add
+            if (!FinishFlg)
+                eLog(this, new LogEventArgs("ADAM_AutoIO_Di_CntMode.exe", "Process is not finish."));
+        }
+        else
+            eResult(this, new ResultEventArgs(iResult.Fail));
+        //
+        eStatus(this, new StatusEventArgs(iStatus.Completion));
+        Application.DoEvents(); //label23.Text = "iA finished....";
     }
     private void DataGridViewCtrlAddNewRow(DataGridViewRow i_Row)
     {
@@ -542,7 +542,8 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
         if (!timer1.Enabled)
         {
             //SetParaToFile();
-            ADAMConnection();
+            //ADAMConnection();
+            StartTest();
         }
         else
         {
@@ -732,7 +733,7 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
                 else
                 {
                     //全部channel做完,結束流程
-                    timer1.Stop(); RunBtnStr = "Run";
+                    timer1.Stop(); RunBtnStr = "Run"; StartBtn.Text = "Run";
                     FinishFlg = true;
                     if (FailCnt > 0) TestResult = "Fail";
                     else TestResult = "Pass";                   
@@ -799,7 +800,10 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
                 Step = DiCntMdStp.ToString(),
                 RowData = "Check Mds cnt val = 0"
             });
-            if (ReadCntVal(di_id_offset + Ref_IO_Mod.Ch) == 0) DiCntMdStp++;
+
+            //add ascii cmd
+            bool chkAscii = CheckAsciicmd(di_id_offset + Ref_IO_Mod.Ch, "0");
+            if (ReadCntVal(di_id_offset + Ref_IO_Mod.Ch) == 0 && chkAscii) DiCntMdStp++;
             else DiCntMdStp = 99;
         }
         else if (DiCntMdStp == 5) //clear cnt=1(0x34) 
@@ -826,11 +830,13 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
                 RowData = "Check Mds cnt val =10"
             });
             MBData01 = ReadCntVal(di_id_offset + Ref_IO_Mod.Ch).ToString();
-            if (ReadCntVal(di_id_offset + Ref_IO_Mod.Ch) >= 10) DiCntMdStp++;
+            //add ascii cmd
+            bool chkAscii = CheckAsciicmd(di_id_offset + Ref_IO_Mod.Ch,"A");
+            if (ReadCntVal(di_id_offset + Ref_IO_Mod.Ch) >= 10 && chkAscii) DiCntMdStp++;
             else DiCntMdStp = 99;
         }
 
-        else if (DiCntMdStp == 3)//out apax5070 DO to H for 5 times
+        else if (DiCntMdStp == 3)//out apax5070 DO to H for 10 times
         {
             
             ProcessView(new ListViewData()
@@ -929,6 +935,184 @@ public partial class ADAM_AutoIO_Di_CntMode_Form : Form, iATester.iCom
         else flg = false;
 
         return flg;
+    }
+
+    private bool CheckAsciicmd(int _id,string res)
+    {
+        bool check = false;
+        //string s = ADAM6KReqService.SendCmd("$01JCFFFF0001"); //0001, 00 read ch0, 01 read one ch
+        switch (_id) 
+        {
+            case 0:
+                string cmd = "$01JCFFFF0001";
+                string s = ADAM6KReqService.SendCmd(cmd);
+                string tmp1 = s.Substring(0, 3);
+                string tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 1:
+                 cmd = "$01JCFFFF0101";
+                 s = ADAM6KReqService.SendCmd(cmd);
+                 tmp1 = s.Substring(0, 3);
+                 tmp2 = s.Substring(10, 1);
+                 ProcessView(new ListViewData()
+                 {
+                     Ch = Ref_IO_Mod.Ch,
+                     Step = DiCntMdStp.ToString(),
+                     RowData = "Acmd = " + cmd + "res = " + s
+                     //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                 });
+                 if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 2:
+                cmd = "$01JCFFFF0201";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 3:
+                cmd = "$01JCFFFF0301";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 4:
+                cmd = "$01JCFFFF0401";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 5:
+                cmd = "$01JCFFFF0501";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 6:
+                cmd = "$01JCFFFF0601";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 7:
+                cmd = "$01JCFFFF0701";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 8:
+                cmd = "$01JCFFFF0801";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 9:
+                cmd = "$01JCFFFF0901";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 10:
+                cmd = "$01JCFFFF0A01";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;
+            case 11:
+                cmd = "$01JCFFFF0B01";
+                s = ADAM6KReqService.SendCmd(cmd);
+                tmp1 = s.Substring(0, 3);
+                tmp2 = s.Substring(10, 1);
+                ProcessView(new ListViewData()
+                {
+                    Ch = Ref_IO_Mod.Ch,
+                    Step = DiCntMdStp.ToString(),
+                    RowData = "Acmd = " + cmd + "res = " + s
+                    //+", cEn = " + Ref_IO_Mod.cEn.ToString()
+                });
+                if (tmp1 == ">01" && tmp2 == res) check = true;
+                break;               
+        }
+        return check;
     }
     private int ReadCntVal(int _id)
     {

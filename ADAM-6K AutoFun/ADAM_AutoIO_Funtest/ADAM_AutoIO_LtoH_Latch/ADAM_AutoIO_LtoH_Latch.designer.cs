@@ -399,7 +399,7 @@
         this.Controls.Add(this.groupBox1);
         this.Name = "ADAM_AutoIO_LtoH_Latch_Form";
         this.Text = "ADAM_AutoIO_LtoH_Latch";
-        this.Load += new System.EventHandler(this.ADAM_AutoIO_ChannelMask_Load);
+        this.Load += new System.EventHandler(this.ADAM_AutoIO_LtoH_Latch_Load);
         this.groupBox1.ResumeLayout(false);
         this.groupBox1.PerformLayout();
         this.statusStrip1.ResumeLayout(false);

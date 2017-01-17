@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_HtoL_Latch", "ADAM_AutoIO_HtoL_Latch.csproj", "{DDE02865-8639-4D4B-AD79-F9137DFA643C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADAM_AutoIO_HtoL_Latch", "ADAM_AutoIO_HtoL_Latch.csproj", "{19F97A5E-86AB-446C-B167-26B2B47F3D66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDE02865-8639-4D4B-AD79-F9137DFA643C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F97A5E-86AB-446C-B167-26B2B47F3D66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

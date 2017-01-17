@@ -123,37 +123,6 @@ namespace Service
             }
             return rec_str;
         }
-        //20161111 add new
-        public object GetRngCodeFromModbus()
-        {
-            int[] res = new int[1]; int[] temp;
-            if (adamModbus.Modbus().ReadInputRegs(201, Device.AiTotal, out temp))
-            {
-                res = temp;
-            }
-            return res;
-        }
-        public object GetValueFromModbus()
-        {
-            int[] res = new int[1]; int[] temp;
-            if (adamModbus.Modbus().ReadInputRegs(1, Device.AiTotal, out temp))
-            {
-                res = temp;
-            }
-            return res;
-        }
-
-        private void UpdateDevUIStatus()
-        {
-            BaseListOfIOItems = new System.Collections.ArrayList();
-            //string mtype = "";
-            //adamCom.Configuration(m_iAddr).GetModuleName(out mtype);
-            m_Adam6000Type = GetModuleType(SendCmd("$01M"));
-            if (m_Adam6000Type != Adam6000Type.Non)
-            {
-                Device = new ADAM6K_IO_Model(m_Adam6000Type);
-            }
-        }
 
         #region -- Implement Interface --
         public DeviceModel GetDevice()//DeviceViewModel實作介面
@@ -193,6 +162,38 @@ namespace Service
             return 2001;//1000
         }
 
+        //20161111 add new
+        public object GetRngCodeFromModbus()
+        {
+            int[] res = new int[1]; int[] temp;
+            if (adamModbus.Modbus().ReadInputRegs(201, Device.AiTotal, out temp))
+            {
+                res = temp;
+            }
+            return res;
+        }
+        public object GetValueFromModbus()
+        {
+            int[] res = new int[1]; int[] temp;
+            if (adamModbus.Modbus().ReadInputRegs(1, Device.AiTotal, out temp))
+            {
+                res = temp;
+            }
+            return res;
+        }
+
+        private void UpdateDevUIStatus()
+        {
+            BaseListOfIOItems = new System.Collections.ArrayList();
+            //string mtype = "";
+            //adamCom.Configuration(m_iAddr).GetModuleName(out mtype);
+            m_Adam6000Type = GetModuleType(SendCmd("$01M"));
+            if (m_Adam6000Type != Adam6000Type.Non)
+            {
+                Device = new ADAM6K_IO_Model(m_Adam6000Type);
+            }
+        }
+
         #region -- IO Service --
 
         //-- IO List Service --
@@ -224,6 +225,12 @@ namespace Service
         public void UpdateIOValue(IOModel data)
         {
             UpdateIOVal(data);
+        }
+
+        //20170104 add for set all channel mode to default.
+        public bool SetDIO_DefaultMod()
+        {
+            return Set_DefaultMod();
         }
 
 
@@ -742,6 +749,78 @@ namespace Service
             }
             string subCmd = "";
             foreach(var _item in array)
+            {
+                subCmd += _item.ToString();
+            }
+            string cmd = "$01C" + subCmd;
+            if (SendCmd(cmd) == ">01\r")
+                return true;
+
+            return false;
+        }
+        private bool Set_DefaultMod()
+        {
+            int m_iDiTotal = Device.DiTotal, m_iDoTotal = Device.DoTotal;
+            string[] ArrayStr = new string[m_iDiTotal + m_iDoTotal];
+            ArrayStr.Initialize();
+            for (int i = 0; i < m_iDiTotal; i++)
+            {
+                if (m_Adam6000Type == Adam6000Type.Adam6052)
+                    ArrayStr[i] = "60";
+                else
+                    ArrayStr[i] = "A0";
+            }
+            for (int i = m_iDiTotal; i < m_iDiTotal + m_iDoTotal; i++)
+            {
+                    ArrayStr[i] = "00";
+            }
+
+
+            //string tpyStr = SpiltStr(SendCmd("$01C"), '!', '\r');
+            //ArrayList temp_list = new ArrayList();
+            ////get DIO mode type
+            //for (int i = 0; i < tpyStr.Length; i += 2)
+            //{
+            //    var res = tpyStr.ToCharArray(i, 2);
+            //    string temp = "";
+            //    foreach (var tChar in res)
+            //    {
+            //        temp += tChar.ToString();
+            //    }
+            //    temp_list.Add(temp);
+            //}
+            //if (temp_list.Count < 1) return false;
+            //var array = temp_list.ToArray();
+            //if (mod.Id/*_id*/ >= (int)DevIDDefine.DO)
+            //{
+            //    int ch = mod.Ch;//_id - (int)DevIDDefine.DO + m_iDiTotal;
+            //    string typ_S = "";
+            //    if (mod.Md == 0) typ_S = "00";
+            //    else if (mod.Md == 1) typ_S = "01";
+            //    else if (mod.Md == 2) typ_S = "02";
+            //    else if (mod.Md == 3) typ_S = "03";
+            //    else if (mod.Md == 4) typ_S = "04";
+            //    array[ch] = typ_S;
+            //}
+            //else
+            //{
+            //    int ch = mod.Ch;// _id; 
+            //    string typS = "";
+            //    //if (_typ == 160) typS = "A0";
+            //    //else if(_typ == 161) typS = "A1";
+            //    //else if (_typ == 162) typS = "A2";
+            //    //else if (_typ == 163) typS = "A3";
+            //    //else if (_typ == 164) typS = "A4";
+            //    if (mod.Inv == 1 && mod.Fltr == 1)
+            //        typS = "E" + mod.Md.ToString();
+            //    else if (mod.Inv == 0 && mod.Fltr == 1)
+            //        typS = "6" + mod.Md.ToString();
+            //    else typS = "A" + mod.Md.ToString();
+
+            //    array[ch] = typS;
+            //}
+            string subCmd = "";
+            foreach (var _item in ArrayStr)
             {
                 subCmd += _item.ToString();
             }

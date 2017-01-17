@@ -218,7 +218,7 @@
         this.CDipTxtbox.Name = "CDipTxtbox";
         this.CDipTxtbox.Size = new System.Drawing.Size(130, 27);
         this.CDipTxtbox.TabIndex = 14;
-        this.CDipTxtbox.Text = "172.18.3.202";
+        this.CDipTxtbox.Text = "192.168.0.81";
         // 
         // label9
         // 
@@ -236,7 +236,7 @@
         this.ipTxtbox.Name = "ipTxtbox";
         this.ipTxtbox.Size = new System.Drawing.Size(149, 27);
         this.ipTxtbox.TabIndex = 12;
-        this.ipTxtbox.Text = "172.18.3.188";
+        this.ipTxtbox.Text = "192.168.0.15";
         // 
         // label8
         // 

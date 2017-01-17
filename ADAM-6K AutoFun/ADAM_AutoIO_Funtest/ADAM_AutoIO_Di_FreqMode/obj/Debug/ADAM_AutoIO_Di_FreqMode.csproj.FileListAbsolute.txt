@@ -1,8 +1,8 @@
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_FreqMode.exe
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_Di_FreqMode.pdb
-D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.csprojResolveAssemblyReference.cache
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode_Form.resources
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.Properties.Resources.resources
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.csproj.GenerateResource.Cache
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.exe
 D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_Di_FreqMode\obj\Debug\ADAM_AutoIO_Di_FreqMode.csprojResolveAssemblyReference.cache

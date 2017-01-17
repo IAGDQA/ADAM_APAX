@@ -460,32 +460,32 @@ public partial class ADAM_AutoIO_ChannelMask_Form : Form, iATester.iCom
         ADAM6KReqService = new ADAM6KReqService();
         APAX5070Service = new ModbusTCPService();
         //debug
-        ADAMConnection();
+        //ADAMConnection();
     }
     public void StartTest()//iATester
     {
-        //if (WISEConnection())
-        //{
-        //    eStatus(this, new StatusEventArgs(iStatus.Running));
-        //    while (timer.Enabled)
-        //    {
-        //        Application.DoEvents();
-        //        label23.Text = "iA running....";
-        //    }
+        if (ADAMConnection())
+        {
+            eStatus(this, new StatusEventArgs(iStatus.Running));
+            while (timer1.Enabled)
+            {
+                Application.DoEvents();
+                //label23.Text = "iA running....";
+            }
 
-        //    if (FailCnt > 0 || !FinishFlg)
-        //        eResult(this, new ResultEventArgs(iResult.Fail));
-        //    else
-        //        eResult(this, new ResultEventArgs(iResult.Pass));
-        //    //20161109 add
-        //    if (!FinishFlg)
-        //        eLog(this, new LogEventArgs("WISE_AutoIO_AI_FunTest.exe", "Process is not finish."));
-        //}
-        //else
-        //    eResult(this, new ResultEventArgs(iResult.Fail));
-        ////
-        //eStatus(this, new StatusEventArgs(iStatus.Completion));
-        //Application.DoEvents(); label23.Text = "iA finished....";
+            if (FailCnt > 0 || !FinishFlg)
+                eResult(this, new ResultEventArgs(iResult.Fail));
+            else
+                eResult(this, new ResultEventArgs(iResult.Pass));
+            //20161109 add
+            if (!FinishFlg)
+                eLog(this, new LogEventArgs("ADAM_AutoIO_ChannelMask.exe", "Process is not finish."));
+        }
+        else
+            eResult(this, new ResultEventArgs(iResult.Fail));
+        //
+        eStatus(this, new StatusEventArgs(iStatus.Completion));
+        Application.DoEvents(); //label23.Text = "iA finished....";
     }
     private void DataGridViewCtrlAddNewRow(DataGridViewRow i_Row)
     {
@@ -537,7 +537,8 @@ public partial class ADAM_AutoIO_ChannelMask_Form : Form, iATester.iCom
         if (!timer1.Enabled)
         {
             //SetParaToFile();
-            ADAMConnection();
+            //ADAMConnection();
+            StartTest();
         }
         else
         {
@@ -719,7 +720,7 @@ public partial class ADAM_AutoIO_ChannelMask_Form : Form, iATester.iCom
                 else
                 {
                     //全部channel做完,結束流程
-                    timer1.Stop(); RunBtnStr = "Run";
+                    timer1.Stop(); RunBtnStr = "Run"; StartBtn.Text = "Run";
                     FinishFlg = true;
                     if (FailCnt > 0) TestResult = "Fail";
                     else TestResult = "Pass";                   
