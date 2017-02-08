@@ -1,0 +1,8 @@
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_DigitalInOutputCmdSet.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_DigitalInOutputCmdSet.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_DigitalInOutputCmdSet\obj\Debug\ADAM_AutoIO_DigitalInOutputCmdSet.csprojResolveAssemblyReference.cache

@@ -1,0 +1,8 @@
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_LtoH_Latch.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\BuildDLL\ADAM_AutoIO_LtoH_Latch.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch_Form.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch.Properties.Resources.resources
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch.csproj.GenerateResource.Cache
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch.exe
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch.pdb
+D:\Advantech\AutoTest\ADAM-6K AutoFun\ADAM_AutoIO_Funtest\ADAM_AutoIO_LtoH_Latch\obj\Debug\ADAM_AutoIO_LtoH_Latch.csprojResolveAssemblyReference.cache
